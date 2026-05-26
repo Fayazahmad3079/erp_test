@@ -1,0 +1,24 @@
+kivitendo selftest report.
+
+[% IF errors %]
+  General error(s) have occurred.
+  [% errors %]
+[% END %]
+
+Host:   [% host %]
+Path:   [% path %]
+DB:     [% database %]
+Client: [% client %]
+Result: [% SELF.aggreg.get_status %]
+
+------------
+Full report:
+------------
+
+[% FOREACH module = SELF.diag_per_module.keys.sort %]
+Module: [% module %]
+--------------------
+
+[% SELF.diag_per_module.$module %]
+
+[% END %]
